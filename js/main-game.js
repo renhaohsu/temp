@@ -40,7 +40,8 @@ var NPCHeight = 65;
 var NPCWidth = 10;
 var NPCX = 9 * (canvas.width-NPCWidth)/10;  // 之後試試改成random(10,(canvas.width-10))
 var NPCVelX = 7;
-// var NPCisdefeated = false;  //突然用不到了
+var NPCshow = 0;
+var NPCisdefeated = 0; 
 // NPC's 血條
 var NPC_hp_Height = 10;
 var NPC_hp_Width = 50;
@@ -67,6 +68,8 @@ var rightPressed = false;
 var leftPressed = false;
 var spacePressed = false;
 
+//text
+var textHeight = 50;
 
 
 
@@ -80,7 +83,40 @@ var spacePressed = false;
 //     ctx.closePath();
 // }
 
+function showText() {
+	var p = document.getElementsByTagName('p');
+	if (NPCisdefeated % 6 == 0) {
+		p[0].style.display = 'none';
+		p[0].innerText = '目測NPC存活，快給他一點傷害';
+	} if (NPCisdefeated % 6 == 1) {
+		p[0].style.display = 'block';	
+		p[0].innerText = '什麼 他居然會復活';
+	} if (NPCisdefeated % 6 == 2) {
+		// p[0].style.display = 'flex';	
+		p[0].innerText = '你打倒了NPC的次數除三餘二';
+	} if (NPCisdefeated % 6 == 3) {
+		// p[0].style.display = 'flex';	
+		p[0].innerText = '什麼 他居然又復活了';
+	} if (NPCisdefeated % 6 == 4) {
+		// p[0].style.display = 'flex';	
+		p[0].innerText = '雖然NPC又復活了 但是我們總是會有辦法的';
+	} if (NPCisdefeated % 6 == 5) {
+		// p[0].style.display = 'flex';	
+		p[0].innerText = '雖然是這麼說啦 但我還沒想到後面的梗';
+	}
+	// ctx.beginPath();
+	// ctx.rect(0, canvas.height-textHeight, canvas.width, textHeight);
+	// ctx.fillStyle = "rgba(255,255,255,0.3)";
+	// ctx.fill();
+	// ctx.closePath();
+	
+}
 
+function showOpen() {
+
+	ctx.beginPath();
+	ctx.rect(0, canvas.height, canvas.width, canvas.height)
+}
 
 function drawNPC() {
 	ctx.beginPath();
@@ -135,6 +171,7 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // drawBall();
     drawPaddle();
+    showText();
 
     // 畫出NPC
     if (NPC_hp_Width){
@@ -147,7 +184,8 @@ function draw() {
 				NPC_hp_Width --;
 			} else if (NPC_hp_Width <= 0){
 				NPC_hp_Width = 0;
-				NPCisdefeated = true;
+				NPCisdefeated += 1;
+				NPCshow = 0;
 			}
 		}
 	// } else {
@@ -166,15 +204,20 @@ function draw() {
 		// } else if (point){
 		// 	console.log(point);
 		// }
-			setTimeout(()=>{
-				NPC_hp_Width=50;
-				// NPCX=random(10,(canvas.width-10));
-				// NPC_hp_X = NPCX - (0.45 * NPC_hp_Width);
-			}, 3000);
+
+		NPCshow += 1
+		if ( NPCshow == 300 ) {
+			NPC_hp_Width=50;
+			NPCshow = 0;
+			NPCisdefeated += 1;
+			console.log(NPCisdefeated)
+			// NPCX=random(10,(canvas.width-10));
+			// NPC_hp_X = NPCX - (0.45 * NPC_hp_Width);
 			// NPCisdefeated = false;
-		
+		}
 
 	}
+
 
 
     if(x + dx > canvas.width-ballRadius || x + dx < 0) {
