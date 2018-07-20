@@ -48,11 +48,3 @@ function Drop() {
     text(s[this.i] + s[this.i+1] +s[this.i+2], this.x, this.y, 32, 32);
   }
 }
-
-  this.show = function() {
-    var thick = map(this.z, 0, 20, 1, 4);
-    strokeWeight(thick);
-    stroke(255, 255, 255);
-    line(this.x, this.y, this.x, this.y+this.len);
-  }
-}
