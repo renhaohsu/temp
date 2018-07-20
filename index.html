@@ -16,6 +16,7 @@
 			border: 0;
 			padding: 0;
 			overflow: hidden;
+			background-color: rgba(39, 40, 34, 1);
 			 }
 
 		img {
@@ -27,6 +28,16 @@
 		    bottom:0;
 		    left:0;
 		    margin:auto;
+		    z-index: 2;
+
+		}
+		p {
+		    position: fixed;
+			width: 640px;
+		    bottom:5%;
+		    left:50%;
+		    transform: translateX(-50%);
+		    color: rgba(102, 217, 239, 1);
 		}
 		
 
@@ -37,12 +48,28 @@
 		    bottom:0;
 		    left:0;
 		    margin:auto;
-		    z-index: -1;
+		    z-index: 1;
 		}
 
-		/*@media screen and (max-width: 800px) {
-			body {width: 90%;}
-		}*/
+		@media screen and (max-width: 800px) {
+
+			img {
+
+			    transform: translateX(-50%);
+			}
+			
+			#defaultCanvas0 {
+			    transform: translateX(-50%);
+			}
+
+			p {
+			    position: fixed;
+				width: 90%;
+			    bottom: 0;
+			    left:50%;
+			    transform: translateX(-50%);
+			}
+		}
 
 	</style>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.1/dat.gui.js"></script> -->
@@ -51,8 +78,9 @@
 	<script src="5.js"></script>
 </head>
 <body>
+	<img src="strawberrycake-missing - ___burned.png" alt="被挖空的瑞士捲">
 
-<img src="strawberrycake-missing - ___burned.png" alt="被挖空的瑞士捲">
+	<p>這顆草莓瑞士捲，草莓沾著奶油吃起來香濃滑口，酸酸甜甜，搭配巧克力蛋糕，滋味絕妙。</p>
 
 <!-- <script src="js/main.js"></script> -->
 
