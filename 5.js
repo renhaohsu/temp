@@ -1,18 +1,3 @@
-function setup() {
-  createCanvas(640, 360);
-  for (var i = 0; i < 1000; i++) {
-    drops[i] = new Drop();
-  }
-}
-
-function draw() {
-  background(0, 248, 1);
-  for (var i = 0; i < drops.length; i++) {
-    drops[i].fall();
-    drops[i].show();
-  }
-}
-
 
 function Drop() {
   this.x = random(width);
@@ -37,6 +22,24 @@ function Drop() {
     strokeWeight(thick);
     stroke(255, 255, 255);
     line(this.x, this.y, this.x, this.y+this.len);
+  }
+}
+
+
+
+
+function setup() {
+  createCanvas(640, 360);
+  for (var i = 0; i < 1000; i++) {
+    drops[i] = new Drop();
+  }
+}
+
+function draw() {
+  background(0, 248, 1);
+  for (var i = 0; i < drops.length; i++) {
+    drops[i].fall();
+    drops[i].show();
   }
 }
 
