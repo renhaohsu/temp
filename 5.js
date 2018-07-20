@@ -9,7 +9,7 @@ function setup() {
 }
 
 function draw() {
-  background(0, 248, 1);
+  background(39, 40, 34);
   for (var i = 0; i < drops.length; i++) {
     drops[i].fall();
     drops[i].show();
@@ -28,13 +28,13 @@ function Drop() {
 
   this.fall = function() {
     this.y = this.y + this.yspeed;
-    var grav = map(this.z, 0, 20, 0, 0.01);
+    var grav = map(this.z, 0, 20, 0, 0.05);
     this.yspeed = this.yspeed + grav;
 
     if (this.y > height) {
       this.y = random(-200, -100);
 
-      this.i =  Math.floor(random(1, 38));
+      this.i =  Math.floor(random(1, 37));
 
       this.yspeed = map(this.z, 0, 20, 4, 10);
     }
@@ -44,7 +44,9 @@ function Drop() {
     var thick = map(this.z, 0, 20, 1, 4);
     strokeWeight(thick);
     textSize(this.size);
-    fill(255,255,255);
-    text(s[this.i] + s[this.i+1] +s[this.i+2], this.x, this.y, 32, 32);
+    fill(102, 217, 239);
+    textStyle(BOLD);
+    textFont('微軟正黑體');
+    text(s[this.i-1] + "\n" + s[this.i] + "\n" + s[this.i+1] + "\n" + s[this.i+2], this.x, this.y, 32, 80);
   }
 }
